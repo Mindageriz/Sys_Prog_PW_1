@@ -13,3 +13,9 @@
 # OS junk
 Thumbs.db
 .DS_Store
+
+/build/
+*.obj
+*.pdb
+*.ilk
+*.exe
