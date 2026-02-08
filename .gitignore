@@ -1,0 +1,16 @@
+# Build output (ignore everywhere)
+build/
+**/build/
+
+# MSVC artifacts
+*.obj
+*.pdb
+*.ilk
+*.exe
+
+# VS Code cache
+.vscode/ipch/
+
+# OS junk
+Thumbs.db
+.DS_Store
