@@ -1,0 +1,15 @@
+# Build output
+/build/
+
+# MSVC artifacts
+*.obj
+*.ilk
+*.pdb
+*.exe
+
+# VS Code local stuff
+.vscode/ipch/
+
+# OS junk
+Thumbs.db
+.DS_Store
