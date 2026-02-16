@@ -2,7 +2,7 @@
 #include <string>
 #include "prime.h"
 #include "encode.h"
-
+#include "sysinfo.h"
 
 using namespace std;
 
@@ -57,6 +57,11 @@ int main(int argc, char* argv[]) {
     cout << encoded << "\n";
     return 0;
   }
+
+  if (command == "--sysinfo") {
+    printSystemInfo();
+    return 0;
+}
 
 
   cout << "Error: unknown option '" << command << "'\n";
