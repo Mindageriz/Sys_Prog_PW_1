@@ -1,3 +1,5 @@
 #pragma once
 
-void runError(const char* codeStr);
+#include <string>
+
+bool printWindowsErrorMessage(const std::string& codeStr);

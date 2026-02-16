@@ -3,6 +3,7 @@
 #include "prime.h"
 #include "encode.h"
 #include "sysinfo.h"
+#include "error.h"
 
 using namespace std;
 
@@ -61,6 +62,16 @@ int main(int argc, char* argv[]) {
   if (command == "--sysinfo") {
     printSystemInfo();
     return 0;
+}
+
+if (command == "--error") {
+  if (argc < 3) {
+    cout << "Error: missing <code>\n";
+    return 1;
+  }
+
+  printWindowsErrorMessage(argv[2]);
+  return 0;
 }
 
 
