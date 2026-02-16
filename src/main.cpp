@@ -11,7 +11,9 @@ static void printUsage() {
   cout <<
     "Usage:\n"
     "  sysutil.exe --prime <number>\n"
-    "  sysutil.exe --encode <text>";
+    "  sysutil.exe --encode <text>\n"
+    "  sysutil.exe --sysinfo\n"
+    "  sysutil.exe --error <code>\n";
 }
 
 int main(int argc, char* argv[]) {
@@ -36,25 +38,22 @@ int main(int argc, char* argv[]) {
 
   if (command == "--encode") {
     if (argc < 3) {
-        cout << "Error: missing <text>\n";
-        return 1;
+      cout << "Error: missing <text>\n";
+      printUsage();
+      return 1;
     }
-
     string input;
     for (int i = 2; i < argc; i++) {
-        input += argv[i];
-        if (i < argc - 1) {
-            input += " ";
-        }
+      input += argv[i];
+      if (i < argc - 1) {
+        input += " ";  
+      }
     }
-
     string encoded;
-
     if (!encodeBase64(input, encoded)) {
         cout << "Error: encoding failed\n";
         return 1;
     }
-
     cout << encoded << "\n";
     return 0;
   }
@@ -62,18 +61,17 @@ int main(int argc, char* argv[]) {
   if (command == "--sysinfo") {
     printSystemInfo();
     return 0;
-}
-
-if (command == "--error") {
-  if (argc < 3) {
-    cout << "Error: missing <code>\n";
-    return 1;
   }
 
-  printWindowsErrorMessage(argv[2]);
-  return 0;
-}
-
+  if (command == "--error") {
+    if (argc < 3) {
+      cout << "Error: missing <code>\n";
+      printUsage();
+      return 1;
+    }
+    printWindowsErrorMessage(argv[2]);
+    return 0;
+  }
 
   cout << "Error: unknown option '" << command << "'\n";
   printUsage();
